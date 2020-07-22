@@ -1,0 +1,25 @@
+{
+  "name": "team-members",
+  "version": "1.0.0",
+  "description": "generate team members basic information",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anniavd/team-members.git"
+  },
+  "author": "annia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anniavd/team-members/issues"
+  },
+  "homepage": "https://github.com/anniavd/team-members#readme",
+  "dependencies": {
+    "inquirer": "^7.3.2"
+  },
+  "devDependencies": {
+    "jest": "^26.1.0"
+  }
+}
