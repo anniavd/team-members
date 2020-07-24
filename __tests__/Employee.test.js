@@ -1,50 +1,41 @@
 const Employee =require('../lib/Employee.js')
 
 
-test('creates a name ', () => {
-    const employee = new Employee('Ann', '5666', 'email');
+
+test('creates a employee object ', () => {
+  const employee = new Employee('Ann', 5666, 'email');
+
   
-    expect(employee.name).toBe('Ann');
-   
-
- });
-
- test('creates a email', () => {
-  const employee = new Employee('Ann', '5666', 'email');
-
-  expect(employee.email).toBe('email');
+  expect(employee.name).toEqual(expect.any(String));
+  expect(employee.id).toEqual(expect.any(Number));
+  expect(employee.email).toEqual(expect.any(String));
+  
 
 });
 
-test('creates a id', () => {
-  const employee = new Employee('Ann', '5666', 'email');
 
-  expect(employee.getId()).toBe("5666");
+test('creates a getName ', () => {
+  const employee = new Employee('Ann', 5666, 'email');
 
-});
-
-test('creates a getName object', () => {
-  const employee = new Employee('Ann', '5666', 'email');
-
-  expect(employee.getName()).toBe("Ann");
+  expect(employee.getName()).toEqual("Ann");
 
 });
 
-test('creates a getId object', () => {
-  const employee = new Employee('Ann', '5666', 'email');
+test('creates a getId', () => {
+  const employee = new Employee('Ann', 5666, 'email');
 
-  expect(employee.getId()).toBe("5666");
-
-});
-
-test('creates a getEmail object', () => {
-  const employee = new Employee('Ann', '5666', 'email');
-  expect(employee.getEmail()).toBe("email");
+  expect(employee.getId()).toEqual(5666);
 
 });
 
-test('creates a getRole object', () => {
-  const employee = new Employee('Ann', '5666', 'email');
+test('creates a getEmail ', () => {
+  const employee = new Employee('Ann', 5666, 'email');
+  expect(employee.getEmail()).toEqual("email");
+
+});
+
+test('creates a getRole', () => {
+  const employee = new Employee('Ann', 5666, 'email');
 
   expect(employee.getRole()).toBe("Employee");
 
