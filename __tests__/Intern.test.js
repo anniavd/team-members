@@ -1,7 +1,7 @@
 const Intern =require('../lib/Intern.js')
 
 
-test('creates a nameSchool', () => {
+test('creates a Intern object', () => {
     const intern = new Intern('Ann', 5666, 'email', 'nameS');
   
     expect(intern.nameSchool).toEqual(expect.any(String));    
