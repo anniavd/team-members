@@ -1,15 +1,24 @@
 const inquirer = require('inquirer');
 const fs = require('fs')
+//const path = require("path");
+const template=require('./src/page-template')
+
 
 const Manager = require("./lib/Manager")
 const Employee = require("./lib/Employee")
 const Intern = require("./lib/Intern")
 const Engineer = require("./lib/Engineer")
 
-const teamMember = []; //create array member's team.
-const identifier = [];
+const teamMember = {
+    manager:"",
+    engineer: [],
+    intern: []
+};   
 
-//const outPageHtml =path.join(OUTPUT_DIR,"team.html")
+ //create array member's team.
+/*const engineer=[];
+const intern=[];
+const identifier = [];*/
 
 
 function ShowMenu() {
@@ -77,7 +86,7 @@ function ShowMenu() {
         ]) //create manager object
             .then(answers => {
                 const manager = new Manager(answers.nameManager, answers.id, answers.email, answers.officeNum);
-                teamMember.push(manager);
+                teamMember.manager = manager;
                 //identifier.push(answers.id);
                 //call to add employee to the team
                 addEmployee();
@@ -172,7 +181,7 @@ function ShowMenu() {
         ])//create a engineer object
             .then(answerEngineer => {
                 const eng = new Engineer(answerEngineer.nameIng, answerEngineer.idIng, answerEngineer.emailIng, answerEngineer.githubIng);
-                teamMember.push(eng);
+               teamMember.engineer.push(eng)
                 // identifier.push(answerEngineer.idIng);
                 //call to add employee
                 addEmployee();
@@ -242,19 +251,23 @@ function ShowMenu() {
         ])// create a intern object, add a list teamMenber
             .then(answerInt => {
                 const int = new Intern(answerInt.nameInt, answerInt.idInt, answerInt.emailInt, answerInt.schoolName);
-                teamMember.push(int);
+                teamMember.intern.push(int)
                 // identifier.push(answerInt.idInt);
                 addEmployee();
             })
     }
 
     //create a file html
-    function createfileTeam() {
-
-        console.log(teamMember)
-        fs.writeFileSync("./dist/team.html", teamMember, "utf-8");
+   function createfileTeam() {
+    console.log("manager",teamMember)
+   // console.log("ingenieros",teamMember.engineer)
+   //console.log("ing Pos 1",teamMember.engineer[1])
+  // console.log("internos",teamMember.intern)
+      
+        fs.writeFileSync("./dist/team.html",template(teamMember), "utf-8");
     }
 
+ 
     //call to show the manager question
     managerQuest();
 }
