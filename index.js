@@ -14,10 +14,13 @@ const teamMember = {
 
 
 function ShowMenu() {
-
+    
+    console.log("\n** BUILDING MY TEAM **\n");         
+       
 
     // manager building team
     function managerQuest() {
+        console.log("\n** Manager **\n");  
         inquirer.prompt([
             //manager name
             {
@@ -90,6 +93,8 @@ function ShowMenu() {
 
     // add employee
     function addEmployee() {
+        console.log("\n** Adding a employee **\n"); 
+
         inquirer.prompt([
             {
                 type: 'list',
@@ -114,6 +119,8 @@ function ShowMenu() {
 
     //add a engineer to the member team
     function addEngineertoTeam() {
+        console.log("\n** Engineer **\n"); 
+
         inquirer.prompt([
             //engineer name
             {
@@ -124,7 +131,7 @@ function ShowMenu() {
                     if (nameIngInput) {
                         return true;
                     } else {
-                        console.log('Please enter the name!');
+                        console.log('\n Please enter the name!');
                         return false;
                     }
                 }
@@ -135,10 +142,11 @@ function ShowMenu() {
                 name: 'idIng',
                 message: 'What is your engineer ID?',
                 validate: idInput => {           //validation the entry
-                    if (idInput) {
+                    const val=/^\d*$/;
+                    if (idInput.match(val)) {
                         return true;
                     } else {
-                        console.log('Please enter engineer ID!');
+                        console.log('\n Please enter a valid engineer ID!');
                         return false;
                     }
                 }
@@ -149,10 +157,11 @@ function ShowMenu() {
                 name: 'emailIng',
                 message: 'What is your engineer email address?',
                 validate: emailInput => {
-                    if (emailInput) {
+                    const val=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                    if (emailInput.match(val)) {
                         return true;
                     } else {
-                        console.log('Please enter engineer email address!');
+                        console.log('\n Please enter a valid engineer email address!');
                         return false;
                     }
                 }
@@ -166,7 +175,7 @@ function ShowMenu() {
                     if (githubInput) {
                         return true;
                     } else {
-                        console.log('Please enter engineer github username!');
+                        console.log('\n Please enter engineer github username!');
                         return false;
                     }
                 }
@@ -183,6 +192,9 @@ function ShowMenu() {
 
     //add a intern to the member team
     function addInterntoTeam() {
+
+        console.log("\n** Intern **\n"); 
+
         inquirer.prompt([
             //Intern name
             {
@@ -193,7 +205,7 @@ function ShowMenu() {
                     if (nameInput) {
                         return true;
                     } else {
-                        console.log('Please enter the intern name!');
+                        console.log('\n Please enter the intern name!');
                         return false;
                     }
                 }
@@ -204,10 +216,11 @@ function ShowMenu() {
                 name: 'idInt',
                 message: 'What is your intern ID?',
                 validate: idInput => {           //validation the entry
-                    if (idInput) {
+                    const val=/^\d*$/;
+                    if (idInput.match(val)) {
                         return true;
                     } else {
-                        console.log('Please enter your intern ID!');
+                        console.log('\n Please enter your intern ID!');
                         return false;
                     }
                 }
@@ -218,10 +231,11 @@ function ShowMenu() {
                 name: 'emailInt',
                 message: 'What is your intern email address?',
                 validate: emailInput => {
-                    if (emailInput) {
+                    const val=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                    if (emailInput.match(val)) {
                         return true;
                     } else {
-                        console.log('Please enter the intern email address!');
+                        console.log('\n Please enter a valid intern email address!');
                         return false;
                     }
                 }
@@ -235,7 +249,7 @@ function ShowMenu() {
                     if (schoolNameInput) {
                         return true;
                     } else {
-                        console.log('Please enter the school name!');
+                        console.log('\n Please enter the school name!');
                         return false;
                     }
                 }
