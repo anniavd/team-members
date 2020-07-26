@@ -266,14 +266,13 @@ function ShowMenu() {
 
     //create a file html
     function createfileTeam() {
-        console.log("manager", teamMember)
-
+        
         fs.writeFileSync("./dist/team.html", template(teamMember), "utf-8");
 
         copyFile();
 
     }
-
+//create a copy file for style.css
     const copyFile = () => {
         return new Promise((resolve, reject) => {
         fs.copyFile('./src/style.css', './dist/style.css', err => {
