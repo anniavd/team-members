@@ -1,26 +1,26 @@
 const inquirer = require('inquirer');
 const fs = require('fs')
-const template=require('./src/page-template')
+const template = require('./src/page-template')
 const Manager = require("./lib/Manager")
 const Employee = require("./lib/Employee")
 const Intern = require("./lib/Intern")
 const Engineer = require("./lib/Engineer")
 
 const teamMember = {
-    manager:"",
+    manager: "",
     engineer: [],
     intern: []
-};   
+};
 
 
 function ShowMenu() {
-    
-    console.log("\n** BUILDING MY TEAM **\n");         
-       
+
+    console.log("\n** BUILDING MY TEAM **\n");
+
 
     // manager building team
     function managerQuest() {
-        console.log("\n** Manager **\n");  
+        console.log("\n** Manager **\n");
         inquirer.prompt([
             //manager name
             {
@@ -42,7 +42,7 @@ function ShowMenu() {
                 name: 'id',
                 message: 'What is your team manager’s ID?',
                 validate: idInput => {           //validation the entry
-                    const val=/^\d*$/;
+                    const val = /^\d*$/;
                     if (idInput.match(val)) {
                         return true;
                     } else {
@@ -57,7 +57,7 @@ function ShowMenu() {
                 name: 'email',
                 message: 'What is your team manager’s email address?',
                 validate: emailInput => {  //validation the entry
-                    const val=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                    const val = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                     if (emailInput.match(val)) {
                         return true;
                     } else {
@@ -72,7 +72,7 @@ function ShowMenu() {
                 name: 'officeNum',
                 message: 'What is your team manager’s office number?',
                 validate: officeNumInput => {  //validation the entry
-                    const val=/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+                    const val = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
                     if (officeNumInput.match(val)) {
                         return true;
                     } else {
@@ -84,7 +84,7 @@ function ShowMenu() {
         ]) //create manager object
             .then(answers => {
                 const manager = new Manager(answers.nameManager, answers.id, answers.email, answers.officeNum);
-                teamMember.manager = manager;              
+                teamMember.manager = manager;
                 //call to add employee to the team
                 addEmployee();
             })
@@ -93,7 +93,7 @@ function ShowMenu() {
 
     // add employee
     function addEmployee() {
-        console.log("\n** Adding a employee **\n"); 
+        console.log("\n** Adding a employee **\n");
 
         inquirer.prompt([
             {
@@ -119,7 +119,7 @@ function ShowMenu() {
 
     //add a engineer to the member team
     function addEngineertoTeam() {
-        console.log("\n** Engineer **\n"); 
+        console.log("\n** Engineer **\n");
 
         inquirer.prompt([
             //engineer name
@@ -142,7 +142,7 @@ function ShowMenu() {
                 name: 'idIng',
                 message: 'What is your engineer ID?',
                 validate: idInput => {           //validation the entry
-                    const val=/^\d*$/;
+                    const val = /^\d*$/;
                     if (idInput.match(val)) {
                         return true;
                     } else {
@@ -157,7 +157,7 @@ function ShowMenu() {
                 name: 'emailIng',
                 message: 'What is your engineer email address?',
                 validate: emailInput => {
-                    const val=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                    const val = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                     if (emailInput.match(val)) {
                         return true;
                     } else {
@@ -184,7 +184,7 @@ function ShowMenu() {
         ])//create a engineer object
             .then(answerEngineer => {
                 const eng = new Engineer(answerEngineer.nameIng, answerEngineer.idIng, answerEngineer.emailIng, answerEngineer.githubIng);
-               teamMember.engineer.push(eng)                
+                teamMember.engineer.push(eng)
                 //call to add employee
                 addEmployee();
             })
@@ -193,7 +193,7 @@ function ShowMenu() {
     //add a intern to the member team
     function addInterntoTeam() {
 
-        console.log("\n** Intern **\n"); 
+        console.log("\n** Intern **\n");
 
         inquirer.prompt([
             //Intern name
@@ -216,7 +216,7 @@ function ShowMenu() {
                 name: 'idInt',
                 message: 'What is your intern ID?',
                 validate: idInput => {           //validation the entry
-                    const val=/^\d*$/;
+                    const val = /^\d*$/;
                     if (idInput.match(val)) {
                         return true;
                     } else {
@@ -231,7 +231,7 @@ function ShowMenu() {
                 name: 'emailInt',
                 message: 'What is your intern email address?',
                 validate: emailInput => {
-                    const val=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                    const val = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                     if (emailInput.match(val)) {
                         return true;
                     } else {
@@ -265,13 +265,31 @@ function ShowMenu() {
     }
 
     //create a file html
-   function createfileTeam() {
-    console.log("manager",teamMember)  
-      
-        fs.writeFileSync("./dist/team.html",template(teamMember),"utf-8");
+    function createfileTeam() {
+        console.log("manager", teamMember)
+
+        fs.writeFileSync("./dist/team.html", template(teamMember), "utf-8");
+
+        copyFile();
+
     }
 
- 
+    const copyFile = () => {
+        return new Promise((resolve, reject) => {
+        fs.copyFile('./src/style.css', './dist/style.css', err => {
+                if (err) {
+                    reject(err);
+                    //return out of the function here to make sure the Promise doesn't accidentally execture the resolve() function as well
+                    return;
+                }
+                resolve({
+                    ok: true,
+                    message: 'File copied!'
+                });
+            });
+        });
+    };
+    
     //call to show the manager question
     managerQuest();
 }
