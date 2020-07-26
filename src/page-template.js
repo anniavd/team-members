@@ -9,41 +9,18 @@ const generateManager = teamMember => {
     return `
     <div class="card" style="width: 18rem;">
     <div class="card-header">
-    <h3> Manager:${teamMember.manager.name}<h3>
+    <h3>Manager<h3>
+    <h4>${teamMember.manager.name}<h4>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">${teamMember.manager.id}</li>
-      <li class="list-group-item">${teamMember.manager.email}</li>              
+      <li class="list-group-item">ID:${teamMember.manager.id}</li>
+      <li class="list-group-item">Email: ${teamMember.manager.email}</li>              
       <li class="list-group-item">${teamMember.manager.officeNumber}</li>
     </ul>
   </div>
     `;
 };
 
-
-/*const generateEngineer = (teamMember) => {
-
-    if (!teamMember.engineer) {
-        return '';
-    } else {
-        var html = '';
-        for (let i = 0; i < teamMember.engineer.length; i++) {
-            console.log(teamMember.engineer[i])
-            html += `      
-    <div class="card" style="width: 18rem; ">
-    <div class="card-header">
-    <h3>Engineer:${teamMember.engineer[i].name}<h3>
-    </div>
-    <ul class="list-group list-group-flush">          
-      <li class="list-group-item">${teamMember.engineer[i].id}</li>              
-      <li class="list-group-item">${teamMember.engineer[i].email}</li>
-      <li class="list-group-item">${teamMember.engineer[i].github}</li>
-    </ul>
-  </div>   `
-        }
-        return html;
-    }
-};*/
 
 const generateEngineer = (teamMember) => {
    
@@ -56,12 +33,13 @@ const generateEngineer = (teamMember) => {
             html += `            
     <div class="card" style="width: 18rem; ">
     <div class="card-header">
-    <h3>Engineer:${teamMember.engineer[i].name}<h3>
+    <h3>Engineer<h3>
+    <h4>${teamMember.engineer[i].name}<h4>
     </div>
     <ul class="list-group list-group-flush">          
-      <li class="list-group-item">${teamMember.engineer[i].id}</li>              
-      <li class="list-group-item"><a href="#">${teamMember.engineer[i].email}</a></li>
-      <li class="list-group-item"><a href="https://github.com/${teamMember.engineer[i].github}"  target="_blank">${teamMember.engineer[i].github}</a></li>
+      <li class="list-group-item">ID:${teamMember.engineer[i].id}</li>              
+      <li class="list-group-item"><a href="#">Email: ${teamMember.engineer[i].email}</a></li>
+      <li class="list-group-item"><a href="https://github.com/${teamMember.engineer[i].github}" target="_blank">Github: ${teamMember.engineer[i].github}</a></li>
     </ul>
   </div>   `
         }
@@ -80,12 +58,13 @@ const generateIntern = teamMember => {
          html+=`      
 <div class="card" style="width: 18rem; ">
     <div class="card-header">
-    <h3>Inter:${teamMember.intern[i].name}<h3>   
+    <h3>Intern<h3>   
+    <h4>${teamMember.intern[i].name}<h4>   
     </div>
     <ul class="list-group list-group-flush">          
-      <li class="list-group-item">${teamMember.intern[i].id}</li>              
-      <li class="list-group-item"><a href="#">${teamMember.intern[i].email}</a></li>
-      <li class="list-group-item">${teamMember.intern[i].nameSchool}</li>
+      <li class="list-group-item">ID: ${teamMember.intern[i].id}</li>              
+      <li class="list-group-item"><a href="#">Email: ${teamMember.intern[i].email}</a></li>
+      <li class="list-group-item">School name: ${teamMember.intern[i].nameSchool}</li>
     </ul>
   </div>  `
         }
