@@ -1,9 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs')
-//const path = require("path");
 const template=require('./src/page-template')
-
-
 const Manager = require("./lib/Manager")
 const Employee = require("./lib/Employee")
 const Intern = require("./lib/Intern")
@@ -14,11 +11,6 @@ const teamMember = {
     engineer: [],
     intern: []
 };   
-
- //create array member's team.
-/*const engineer=[];
-const intern=[];
-const identifier = [];*/
 
 
 function ShowMenu() {
@@ -86,8 +78,7 @@ function ShowMenu() {
         ]) //create manager object
             .then(answers => {
                 const manager = new Manager(answers.nameManager, answers.id, answers.email, answers.officeNum);
-                teamMember.manager = manager;
-                //identifier.push(answers.id);
+                teamMember.manager = manager;              
                 //call to add employee to the team
                 addEmployee();
             })
@@ -181,8 +172,7 @@ function ShowMenu() {
         ])//create a engineer object
             .then(answerEngineer => {
                 const eng = new Engineer(answerEngineer.nameIng, answerEngineer.idIng, answerEngineer.emailIng, answerEngineer.githubIng);
-               teamMember.engineer.push(eng)
-                // identifier.push(answerEngineer.idIng);
+               teamMember.engineer.push(eng)                
                 //call to add employee
                 addEmployee();
             })
@@ -259,12 +249,9 @@ function ShowMenu() {
 
     //create a file html
    function createfileTeam() {
-    console.log("manager",teamMember)
-   // console.log("ingenieros",teamMember.engineer)
-   //console.log("ing Pos 1",teamMember.engineer[1])
-  // console.log("internos",teamMember.intern)
+    console.log("manager",teamMember)  
       
-        fs.writeFileSync("./dist/team.html",template(teamMember), "utf-8");
+        fs.writeFileSync("./dist/team.html",template(teamMember),"utf-8");
     }
 
  
