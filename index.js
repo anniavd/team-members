@@ -28,7 +28,7 @@ function ShowMenu() {
                     if (nameTeamInput) {
                         return true;
                     } else {
-                        console.log('Please enter team manager’s name!');
+                        console.log('\nPlease enter team manager’s name!');
                         return false;
                     }
                 }
@@ -37,12 +37,13 @@ function ShowMenu() {
             {
                 type: 'input',
                 name: 'id',
-                message: 'What is your team manager’s  ID?',
+                message: 'What is your team manager’s ID?',
                 validate: idInput => {           //validation the entry
-                    if (idInput) {
+                    const val=/^\d*$/;
+                    if (idInput.match(val)) {
                         return true;
                     } else {
-                        console.log('Please enter manager ID!');
+                        console.log('\n Please enter a valid manager ID!');
                         return false;
                     }
                 }
@@ -53,10 +54,11 @@ function ShowMenu() {
                 name: 'email',
                 message: 'What is your team manager’s email address?',
                 validate: emailInput => {  //validation the entry
-                    if (emailInput) {
+                    const val=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                    if (emailInput.match(val)) {
                         return true;
                     } else {
-                        console.log('Please enter the email address!');
+                        console.log('\n Please enter a valid email address!');
                         return false;
                     }
                 }
