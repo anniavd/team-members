@@ -67,10 +67,11 @@ function ShowMenu() {
                 name: 'officeNum',
                 message: 'What is your team manager’s office number?',
                 validate: officeNumInput => {  //validation the entry
-                    if (officeNumInput) {
+                    const val=/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+                    if (officeNumInput.match(val)) {
                         return true;
                     } else {
-                        console.log('Please enter the office number!');
+                        console.log('\n Please enter a valid  office number!');
                         return false;
                     }
                 }
