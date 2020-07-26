@@ -21,16 +21,15 @@ const generateManager = teamMember => {
 };
 
 
-const generateEngineer = (teamMember) => {
-   
+/*const generateEngineer = (teamMember) => {
+
     if (!teamMember.engineer) {
         return '';
-    }
-    else {
-
-        for (let i = 0;i<teamMember.engineer.length;i++) {
-             console.log(teamMember.engineer[i])       
-            return (`      
+    } else {
+        var html = '';
+        for (let i = 0; i < teamMember.engineer.length; i++) {
+            console.log(teamMember.engineer[i])
+            html += `      
     <div class="card" style="width: 18rem; ">
     <div class="card-header">
     <h3>Engineer:${teamMember.engineer[i].name}<h3>
@@ -40,33 +39,59 @@ const generateEngineer = (teamMember) => {
       <li class="list-group-item">${teamMember.engineer[i].email}</li>
       <li class="list-group-item">${teamMember.engineer[i].github}</li>
     </ul>
-  </div>   `)
+  </div>   `
         }
+        return html;
+    }
+};*/
+
+const generateEngineer = (teamMember) => {
+   
+    if (!teamMember.engineer) {
+        return '';
+    }
+    else {
+        let html = '';
+        for (let i = 0;i<teamMember.engineer.length;i++) {
+            html += `            
+    <div class="card" style="width: 18rem; ">
+    <div class="card-header">
+    <h3>Engineer:${teamMember.engineer[i].name}<h3>
+    </div>
+    <ul class="list-group list-group-flush">          
+      <li class="list-group-item">${teamMember.engineer[i].id}</li>              
+      <li class="list-group-item"><a href="#">${teamMember.engineer[i].email}</a></li>
+      <li class="list-group-item"><a href="https://github.com/${teamMember.engineer[i].github}"  target="_blank">${teamMember.engineer[i].github}</a></li>
+    </ul>
+  </div>   `
+        }
+        return html;
     }
 };
 
-/*const generateIntern = teamMember => {
+const generateIntern = teamMember => {
   
     if (!teamMember.intern) {
         return '';
     }
     else {
-
-        for (let i = 0; i <= teamMember.intern.length; i++) {
-            return `      
+       let html='';
+        for (let i = 0; i<teamMember.intern.length; i++) {
+         html+=`      
 <div class="card" style="width: 18rem; ">
     <div class="card-header">
     <h3>Inter:${teamMember.intern[i].name}<h3>   
     </div>
     <ul class="list-group list-group-flush">          
       <li class="list-group-item">${teamMember.intern[i].id}</li>              
-      <li class="list-group-item">${teamMember.intern[i].email}</li>
+      <li class="list-group-item"><a href="#">${teamMember.intern[i].email}</a></li>
       <li class="list-group-item">${teamMember.intern[i].nameSchool}</li>
     </ul>
   </div>  `
         }
+        return html;
     }
-};*/
+};
 
 
 
@@ -87,9 +112,10 @@ module.exports = (teamMember) => {
     <header>
     <h1> Team Members</h1>
    </header>
-   <main class="container ">
+   <main class="container ">   
       ${generateManager(teamMember)}       
-      ${generateEngineer(teamMember)}    
+      ${generateEngineer(teamMember)} 
+      ${generateIntern(teamMember)}   
                           
     </main>
 
