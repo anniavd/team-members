@@ -1,4 +1,3 @@
-# Team Members
 # TEAM MEMBERS
 
 
@@ -10,6 +9,10 @@
 Team Members is an application through which the user can form a work team with essential information about its members.the work team will be made up of a manager, engineers and interns.The managen will enter as many engineers as internal make up their team through the console and then this information will be displayed in an html that will be generated dynamically.
   
  
+ ![Homepage](/image/home-page.jpg)
+
+
+
 # License
 The license for which the application is covered:
 NONE 
