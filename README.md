@@ -33,7 +33,7 @@ NONE
 
   If you have questions about the project, below you can find ways to answer them, either by visiting my highub or contacting me by email
   
-  Link to my Github: [avdiaz](https://github.com/avdiaz)
+  Link to my Github: [anniavd](https://github.com/anniavd)
 
   
   Email acount: [annia.valdesd@gmail.com](mailto:annia.valdesd@gmail.com)
